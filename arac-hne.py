@@ -3,6 +3,8 @@ import argparse
 import concurrent.futures
 import socket
 
+from banner import print_banner
+
 def resolve(hostname):
     """Return (hostname, ip) if it resolves, else None."""
     # we'll fill this in next
@@ -18,7 +20,10 @@ def main():
     parser.add_argument("-w", "--wordlist", required=True, help="Subdomain wordlist file")
     parser.add_argument("-t", "--threads", type=int, default=50, help="Worker threads (default 50)")
     parser.add_argument("-o", "--output", help="Write found hostnames to this file")
+    parser.add_argument("--no-banner", action="store_true", help="Skip the startup banner")
     args = parser.parse_args()
+    if not args.no_banner:
+        print_banner("arac-hne", "subdomain enumerator")
     print(f"[*] Enumerating {args.domain} with {args.threads} threads")
 
     with open(args.wordlist) as f:
