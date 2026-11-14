@@ -9,6 +9,10 @@ arac-hne <domain> -w words.txt
 arac-hne example.com -w words.txt -t 50 -o hits.txt
 ```
 
+## Banner
+
+Shows the shared spider signature on startup. `--no-banner` disables it; `NO_COLOR` makes it plain.
+
 ## What I learned
 
 - DNS A-record lookups with socket.gethostbyname / socket.gaierror
